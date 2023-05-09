@@ -4,10 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { HeaderComponent } from './template/header/header.component';
-
-import { NavigationComponent } from './template/navigation/navigation.component';
-
 import { PoModule } from '@po-ui/ng-components';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -19,8 +15,6 @@ import { PoPageLoginModule } from '@po-ui/ng-templates';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    NavigationComponent,
     HomeComponent,
     LoginComponent
   ],
