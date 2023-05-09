@@ -8,7 +8,7 @@ import { PoModule } from '@po-ui/ng-components';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
+import { AuthenticationComponent } from './authentication/authentication.component';
 import { PoTemplatesModule } from '@po-ui/ng-templates';
 import { PoPageLoginModule } from '@po-ui/ng-templates';
 
@@ -16,7 +16,7 @@ import { PoPageLoginModule } from '@po-ui/ng-templates';
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    AuthenticationComponent
   ],
   imports: [
     BrowserModule,

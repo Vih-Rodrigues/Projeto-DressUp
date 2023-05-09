@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { PoPageLoginModule } from '@po-ui/ng-templates';
 
 @Component({
   selector: 'app-login',
