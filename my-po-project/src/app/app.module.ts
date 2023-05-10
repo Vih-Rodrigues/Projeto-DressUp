@@ -4,25 +4,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { HeaderComponent } from './template/header/header.component';
-
-import { NavigationComponent } from './template/navigation/navigation.component';
-
 import { PoModule } from '@po-ui/ng-components';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
+
 import { PoTemplatesModule } from '@po-ui/ng-templates';
 import { PoPageLoginModule } from '@po-ui/ng-templates';
+import { PoContainerModule } from '@po-ui/ng-components';
+
+import { HomeModule } from './home/home.module';
+import { AuthenticationModule } from './authentication/authentication.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    NavigationComponent,
-    HomeComponent,
-    LoginComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +26,10 @@ import { PoPageLoginModule } from '@po-ui/ng-templates';
     HttpClientModule,
     RouterModule.forRoot([]),
     PoTemplatesModule,
-    PoPageLoginModule
+    PoPageLoginModule,
+    PoContainerModule,
+    HomeModule,
+    AuthenticationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
