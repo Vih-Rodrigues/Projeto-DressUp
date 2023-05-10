@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { PoMenuItem } from '@po-ui/ng-components';
 
 @Component({
-  selector: 'app-template-po-ui',
-  templateUrl: './template-po-ui.component.html',
-  styleUrls: ['./template-po-ui.component.css']
+  selector: 'app-about-us',
+  templateUrl: './about-us.component.html',
+  styleUrls: ['./about-us.component.css']
 })
-export class TemplatePoUiComponent {
+export class AboutUsComponent {
   readonly menus: Array<PoMenuItem> = [
     {
       label: 'Home',

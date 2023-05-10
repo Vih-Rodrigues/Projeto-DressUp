@@ -9,13 +9,15 @@ import { LooksComponent } from './looks/looks.component';
 
 import { PoModule } from '@po-ui/ng-components';
 import { PoTemplatesModule } from '@po-ui/ng-templates';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   declarations: [
     TemplatePoUiComponent,
     AddItensComponent,
     ClosetComponent,
-    LooksComponent
+    LooksComponent,
+    AboutUsComponent
   ],
   imports: [
     CommonModule,

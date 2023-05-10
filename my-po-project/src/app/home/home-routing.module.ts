@@ -5,6 +5,7 @@ import { TemplatePoUiComponent } from './template-po-ui/template-po-ui.component
 import { AddItensComponent } from './add-itens/add-itens.component';
 import { ClosetComponent } from './closet/closet.component';
 import { LooksComponent } from './looks/looks.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'looks',
     component: LooksComponent
+  },
+  {
+    path: 'about-us',
+    component: AboutUsComponent
   }
 ];
 
