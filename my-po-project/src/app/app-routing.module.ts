@@ -6,13 +6,13 @@ import { AuthenticationModule } from './authentication/authentication.module';
 
 const routes: Routes = [
   {
-    path: '', redirectTo: '/app-home', pathMatch: 'full'
+    path: '', redirectTo: '/hello', pathMatch: 'full'
   },
   {
-    path: 'app-home', loadChildren: () => import('./home/home.module').then(m => HomeModule)
+    path: 'home', loadChildren: () => import('./home/home.module').then(m => HomeModule)
   },
   {
-    path: 'app-authentication', loadChildren: () => import('./authentication/authentication.module').then(m => AuthenticationModule)
+    path: 'authentication', loadChildren: () => import('./authentication/authentication.module').then(m => AuthenticationModule)
   }
 ];
 

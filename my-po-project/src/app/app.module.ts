@@ -7,16 +7,17 @@ import { AppComponent } from './app.component';
 import { PoModule } from '@po-ui/ng-components';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { AuthenticationComponent } from './authentication/authentication.component';
+
 import { PoTemplatesModule } from '@po-ui/ng-templates';
 import { PoPageLoginModule } from '@po-ui/ng-templates';
+import { PoContainerModule } from '@po-ui/ng-components';
+
+import { HomeModule } from './home/home.module';
+import { AuthenticationModule } from './authentication/authentication.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
-    AuthenticationComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +26,10 @@ import { PoPageLoginModule } from '@po-ui/ng-templates';
     HttpClientModule,
     RouterModule.forRoot([]),
     PoTemplatesModule,
-    PoPageLoginModule
+    PoPageLoginModule,
+    PoContainerModule,
+    HomeModule,
+    AuthenticationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
