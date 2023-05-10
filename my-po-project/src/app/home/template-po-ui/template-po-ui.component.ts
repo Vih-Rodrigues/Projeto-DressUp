@@ -14,29 +14,34 @@ export class TemplatePoUiComponent {
       shortLabel: "Home",
       icon: 'po-icon po-icon-home',
       action: this.Navegar.bind(this),
-      link: '/home'
+      link: '/template-po-ui'
     },
     {
       label: 'Perfil',
       shortLabel: "Perfil",
       icon: 'po-icon po-icon-user',
-      link: '/perfil'
+      link: '/profile'
     },
     {
-      label: 'Peças',
-      shortLabel: 'Peças',
-      icon: 'po-icon po-icon-database',
-      subItems: [
-        {
-          label: 'Cadastro'
-        }
-      ]
+      label: 'Closet',
+      shortLabel: 'Closet',
+      icon: 'po-icon po-icon-travel',
+    },
+    {
+      label: 'Add Itens',
+      shortLabel: 'Add Itens',
+      icon: 'po-icon po-icon-plus',
+    },
+    {
+      label: 'Looks',
+      shortLabel: 'Looks',
+      icon: 'po-icon po-icon-star',
     },
     {
       label: 'Sobre',
       shortLabel: 'Sobre',
-      icon: 'po-icon po-icon-handshake',
-      link: '/sobre'
+      icon: 'po-icon po-icon-exclamation',
+      link: '/about-us'
     },
     {
       label: 'Sair',
