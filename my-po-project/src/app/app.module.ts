@@ -15,6 +15,8 @@ import { PoContainerModule } from '@po-ui/ng-components';
 import { HomeModule } from './home/home.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 
+import { FormsModule } from '@angular/forms'; // biblioteca para usar a função de inserir arquivo .png (add itens)
+
 @NgModule({
   declarations: [
     AppComponent
@@ -29,7 +31,8 @@ import { AuthenticationModule } from './authentication/authentication.module';
     PoPageLoginModule,
     PoContainerModule,
     HomeModule,
-    AuthenticationModule
+    AuthenticationModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

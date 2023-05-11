@@ -1,1 +1,26 @@
-<p>add-itens works!</p>
+<div class="po-wrapper">
+    <po-toolbar p-title="DressUp > Add Itens"></po-toolbar>
+
+    <po-menu [p-menus]="menus" [p-collapsed]="true" p-fliter="true" p-logo="./assets/images/dressup.png"></po-menu>
+
+    <po-page-default>
+        <div class = 'po-row'>
+            <po-widget class = 'po-sm-6' [p-height]='320' p-title="Adicionar foto da peça">
+                <img src="../../../assets/images/img_add_itens.png" width="200" height="200">
+                <br>
+                <input type="file" (change)="onFileSelected($event)"> <!-- input permite inserir a foto através da função onFileSelected do add-itens.component.ts -->
+            </po-widget>
+        </div>
+        <div class = 'po-row'>
+            <po-widget class = 'po-sm-6' [p-height]='340'>
+                <!-- Combo PO-UI -->
+                <po-combo name="tipo_peca_roupa" p-label="Tipo" [p-options]="[{ value: 'Superior' }, { value: 'Inferior' }]"> </po-combo>
+                <br>
+                <po-combo name="cor_peca_roupa" p-label="Tipo" [p-options]="[{ value: 'Azul' }, { value: 'Amarelo' }]"> </po-combo>
+                <br>
+                <!-- Botão PO-UI -->
+                <po-button p-label="Adicionar" (p-click)="onClickAdicionar()"> </po-button>
+            </po-widget>
+        </div>
+    </po-page-default>
+</div>

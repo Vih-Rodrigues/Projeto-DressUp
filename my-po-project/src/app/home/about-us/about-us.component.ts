@@ -31,6 +31,8 @@ export class AboutUsComponent {
       label: 'Add Itens',
       shortLabel: 'Add Itens',
       icon: 'po-icon po-icon-plus',
+      action: this.Navegar.bind(this),
+      link: '/add-itens'
     },
     {
       label: 'Looks',
