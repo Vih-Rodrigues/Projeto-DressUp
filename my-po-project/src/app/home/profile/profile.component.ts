@@ -43,6 +43,8 @@ export class ProfileComponent {
       label: 'Closet',
       shortLabel: 'Closet',
       icon: 'po-icon po-icon-travel',
+      action: this.Navegar.bind(this),
+      link: '/closet'
     },
     {
       label: 'Add Itens',
