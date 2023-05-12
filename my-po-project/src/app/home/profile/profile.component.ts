@@ -2,12 +2,28 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { PoMenuItem } from '@po-ui/ng-components';
 
+// Variáveis temporárias para teste dos campos da página Perfil
+const userName = "Fulano de Tal";
+const email = "fulanodetal@gmail.com";
+
+// Referência dos widget's através da função getElementById
+const widgetUsername = document.getElementById("widget-username");
+const widgetEmail = document.getElementById("widget-email");
+
+// Altera o conteúdo dos widget's
+if (widgetUsername) {
+  widgetUsername.textContent = userName;
+}
+if (widgetEmail) {
+  widgetEmail.textContent = email;
+}
+
 @Component({
-  selector: 'app-template-po-ui',
-  templateUrl: './template-po-ui.component.html',
-  styleUrls: ['./template-po-ui.component.css']
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css']
 })
-export class TemplatePoUiComponent {
+export class ProfileComponent {
   readonly menus: Array<PoMenuItem> = [
     {
       label: 'Home',

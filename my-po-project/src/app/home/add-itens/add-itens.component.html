@@ -5,14 +5,12 @@
 
     <po-page-default>
         <div class = 'po-row'>
-            <po-widget class = 'po-sm-6' [p-height]='320' p-title="Adicionar foto da peça">
+            <po-widget class = 'po-sm-6' [p-height]='350' p-title="Adicionar foto da peça">
                 <img src="../../../assets/images/img_add_itens.png" width="200" height="200">
                 <br>
                 <input type="file" (change)="onFileSelected($event)"> <!-- input permite inserir a foto através da função onFileSelected do add-itens.component.ts -->
             </po-widget>
-        </div>
-        <div class = 'po-row'>
-            <po-widget class = 'po-sm-6' [p-height]='340'>
+            <po-widget class = 'po-sm-6' [p-height]='350'>
                 <!-- Combo PO-UI -->
                 <po-combo name="tipo_peca_roupa" p-label="Tipo" [p-options]="[{ value: 'Superior' }, { value: 'Inferior' }]"> </po-combo>
                 <br>
