@@ -16,14 +16,6 @@
                 display: inline-block;
                 position: relative;
             }
-
-            ul.menu-filtros li a {
-                display: block;
-                padding: 10px;
-                background-color: #ccc;
-                color: #ccc;
-                text-decoration: none;
-            }
         </style>
 
         <ul class="menu-filtros">
@@ -33,24 +25,40 @@
                         <po-checkbox-group
                             name="checkboxFiltros"
                             p-label="Filtros"
+                            style="display: inline-block;"
+                            widget="25%"
                             [p-options]="[
                                 { value: '1', label: 'Calças' },
                                 { value: '2', label: 'Bermudas' },
                                 { value: '3', label: 'Camisetas' },
-                                { value: '4', label: 'Sapatos' },
+                                { value: '4', label: 'Camisas' },
+                                { value: '5', label: 'Sapatos' },
+                                { value: '6', label: 'Vestidos' },
+                                { value: '7', label: 'Saias' },
+                                { value: '8', label: 'Ternos' },
+                                { value: '9', label: 'Sandálias' },
+                                { value: '10', label: 'Gravatas' },
+                                { value: '11', label: 'Tênis' },
+                                { value: '12', label: 'Boné' }
                             ]"
-                            >
+                        >
                         </po-checkbox-group>
-                        <po-button p-label="Buscar" (p-click)="onClickFiltros()"> </po-button>
                     </li>
+                    <po-button p-label="Buscar" (p-click)="onClickFiltros()" p-tooltip="Atenção: se nenhuma opção estiver selecionada, serão retornados todos os itens cadastrados."> </po-button>
                 </ul>
             </li>
         </ul>
 
         <br>
 
-        <!-- Containers dinâmicos - de acordo com a quantidade de peças de roupa cadastradas -->
-        <div id="container-new-item">
-        </div>
+        <po-container >
+
+            <!-- Containers dinâmicos - de acordo com a quantidade de peças de roupa cadastradas -->
+            <div id="container-new-item">
+            </div>
+
+        </po-container>
+
+        <br>
     </po-page-default>
 </div>

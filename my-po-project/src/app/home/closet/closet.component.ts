@@ -17,11 +17,12 @@ document.addEventListener('DOMContentLoaded', function () {
     container.style.border = '1px solid black';
     container.style.backgroundColor = '#BA55D3';
     container.style.display = 'inline-block';
-    container.style.width = '16.5%';
+    container.style.width = '17%';
     container.style.boxSizing = 'borderbox';
+    container.style.margin = '5px';
     if (containerNewItem) {
       containerNewItem.appendChild(container);
-      container.innerHTML = '<img src="../../../assets/images/dressup.png" width="200" height="200"> </img>'; // Oficialmente, o comando deverá inserir o container a imagem encontrada no banco de dados
+      container.innerHTML = '<img src="../../../assets/images/dressup.png" width="250" height="200"> </img>'; // Oficialmente, o comando deverá inserir o container a imagem encontrada no banco de dados
     }
   }
 });
@@ -33,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function () {
   styleUrls: ['./closet.component.css']
 })
 export class ClosetComponent{
-
   readonly menus: Array<PoMenuItem> = [
     {
       label: 'Home',
