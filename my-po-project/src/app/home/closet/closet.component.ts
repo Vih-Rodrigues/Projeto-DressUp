@@ -2,9 +2,12 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { PoMenuItem } from '@po-ui/ng-components';
 
+// ----------
+// Criação de containers dinâmicos - quantidade a partir do número de
+// peças de roupa armazenadas na tabela do banco de dados
 document.addEventListener('DOMContentLoaded', function () {
   const containerNewItem = document.getElementById('container-new-item');
-  const qtdContainers = 3;
+  const qtdContainers = 12; // Número utilizado para teste (oficialmente será retornado por pesquisa no banco de dados)
 
   console.log(containerNewItem);
 
@@ -12,20 +15,25 @@ document.addEventListener('DOMContentLoaded', function () {
     const container = document.createElement('div');
     container.classList.add('container');
     container.style.border = '1px solid black';
-    container.style.backgroundColor = 'gray';
+    container.style.backgroundColor = '#BA55D3';
+    container.style.display = 'inline-block';
+    container.style.width = '16.5%';
+    container.style.boxSizing = 'borderbox';
     if (containerNewItem) {
       containerNewItem.appendChild(container);
-      container.innerHTML = '<p>*imagem*</p>';
+      container.innerHTML = '<img src="../../../assets/images/dressup.png" width="200" height="200"> </img>'; // Oficialmente, o comando deverá inserir o container a imagem encontrada no banco de dados
     }
   }
 });
+// ----------
 
 @Component({
   selector: 'app-closet',
   templateUrl: './closet.component.html',
   styleUrls: ['./closet.component.css']
 })
-export class ClosetComponent {
+export class ClosetComponent{
+
   readonly menus: Array<PoMenuItem> = [
     {
       label: 'Home',
