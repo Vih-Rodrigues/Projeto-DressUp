@@ -4,6 +4,52 @@
     <po-menu [p-menus]="menus" [p-collapsed]="true" p-fliter="true" p-logo="./assets/images/dressup.png"></po-menu>
 
     <po-page-default>
+
+        <style>
+            ul.menu-filtros {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            ul.menu-filtros li {
+                display: inline-block;
+                position: relative;
+            }
+
+            ul.menu-filtros li a {
+                display: block;
+                padding: 10px;
+                background-color: #ccc;
+                color: #ccc;
+                text-decoration: none;
+            }
+        </style>
+
+        <ul class="menu-filtros">
+            <li>
+                <ul>
+                    <li>
+                        <po-checkbox-group
+                            name="checkboxFiltros"
+                            p-label="Filtros"
+                            [p-options]="[
+                                { value: '1', label: 'Calças' },
+                                { value: '2', label: 'Bermudas' },
+                                { value: '3', label: 'Camisetas' },
+                                { value: '4', label: 'Sapatos' },
+                            ]"
+                            >
+                        </po-checkbox-group>
+                        <po-button p-label="Buscar" (p-click)="onClickFiltros()"> </po-button>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <br>
+
+        <!-- Containers dinâmicos - de acordo com a quantidade de peças de roupa cadastradas -->
         <div id="container-new-item">
         </div>
     </po-page-default>

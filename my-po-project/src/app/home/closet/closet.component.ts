@@ -88,6 +88,10 @@ export class ClosetComponent{
     alert('Certeza que deseja sair?')
   }
 
+  public onClickFiltros() {
+    window.location.reload();
+  }
+
   constructor(private route: Router) { }
 
   Navegar(route: any) {
