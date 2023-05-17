@@ -1,1 +1,70 @@
-<p>closet works!</p>
+<div class="po-wrapper">
+    <po-toolbar p-title="DressUp > Closet"></po-toolbar>
+
+    <po-menu [p-menus]="menus" [p-collapsed]="true" p-fliter="true" p-logo="./assets/images/dressup.png"></po-menu>
+
+    <po-page-default>
+
+        <style>
+            ul.menu-filtros {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            ul.menu-filtros li {
+                display: inline-block;
+                position: relative;
+            }
+        </style>
+
+        <ul class="menu-filtros">
+            <li>
+                <ul>
+                    <li>
+                        <po-checkbox-group
+                            name="checkboxFiltros"
+                            p-label="Filtros"
+                            style="display: inline-block;"
+                            widget="25%"
+                            [p-options]="[
+                                { value: '1', label: 'Calças' },
+                                { value: '2', label: 'Bermudas' },
+                                { value: '3', label: 'Camisetas' },
+                                { value: '4', label: 'Camisas' },
+                                { value: '5', label: 'Sapatos' },
+                                { value: '6', label: 'Vestidos' },
+                                { value: '7', label: 'Saias' },
+                                { value: '8', label: 'Ternos' },
+                                { value: '9', label: 'Sandálias' },
+                                { value: '10', label: 'Gravatas' },
+                                { value: '11', label: 'Tênis' },
+                                { value: '12', label: 'Boné' }
+                            ]"
+                        >
+                        </po-checkbox-group>
+                    </li>
+                    <po-button p-label="Buscar" (p-click)="onClickFiltros()" p-tooltip="Atenção: se nenhuma opção estiver selecionada, serão retornados todos os itens cadastrados."> </po-button>
+                </ul>
+            </li>
+        </ul>
+
+        <br>
+
+
+            <!-- Containers dinâmicos - de acordo com a quantidade de peças de roupa cadastradas -->
+            <div id="container-new-item">
+            </div>
+
+
+        <br>
+
+        <!-- chamada de container apenas para dar espaço ao final da página -->
+        <po-container
+            [p-height]="30"
+            [p-no-border]="booleanAuxContainer"
+            [p-no-padding]="booleanAuxContainer"
+            [p-no-shadow]="booleanAuxContainer" >
+        </po-container>
+    </po-page-default>
+</div>
