@@ -51,14 +51,20 @@
 
         <br>
 
-        <po-container >
 
             <!-- Containers dinâmicos - de acordo com a quantidade de peças de roupa cadastradas -->
             <div id="container-new-item">
             </div>
 
-        </po-container>
 
         <br>
+
+        <!-- chamada de container apenas para dar espaço ao final da página -->
+        <po-container
+            [p-height]="30"
+            [p-no-border]="booleanAuxContainer"
+            [p-no-padding]="booleanAuxContainer"
+            [p-no-shadow]="booleanAuxContainer" >
+        </po-container>
     </po-page-default>
 </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { PoMenuItem } from '@po-ui/ng-components';
 
@@ -34,6 +34,9 @@ document.addEventListener('DOMContentLoaded', function () {
   styleUrls: ['./closet.component.css']
 })
 export class ClosetComponent{
+
+  booleanAuxContainer = true;
+
   readonly menus: Array<PoMenuItem> = [
     {
       label: 'Home',
@@ -92,7 +95,11 @@ export class ClosetComponent{
     window.location.reload();
   }
 
-  constructor(private route: Router) { }
+  constructor(private route: Router, private cdr: ChangeDetectorRef) { }
+
+  reloadPage(){
+    this.cdr.detectChanges();
+  }
 
   Navegar(route: any) {
     console.log(route.link)
