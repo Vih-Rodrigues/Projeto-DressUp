@@ -1,0 +1,33 @@
+<div class="po-wrapper">
+    <po-toolbar p-title="DressUp > Looks > Adicionar Novo Look"></po-toolbar>
+
+    <po-menu [p-menus]="menus" [p-collapsed]="true" p-fliter="true" p-logo="./assets/images/dressup.png"></po-menu>
+
+    <po-page-default>
+
+        <p>
+            Selecione os itens que deseja adicionar ao novo look e clique em "Criar".
+        </p>
+
+        <br>
+
+        <po-button p-label="Criar" p-icon="po-icon-new" (p-click)="onClickCreateLook()"> </po-button>
+
+        <br>
+        <br>
+
+        <!-- Containers dinâmicos - de acordo com a quantidade de peças de roupa cadastradas -->
+        <div id="container-closet">
+        </div>
+
+        <br>
+
+        <!-- chamada de container apenas para dar espaço ao final da página -->
+        <po-container
+            [p-height]="30"
+            [p-no-border]="booleanAuxContainer"
+            [p-no-padding]="booleanAuxContainer"
+            [p-no-shadow]="booleanAuxContainer" >
+        </po-container>
+    </po-page-default>
+</div>

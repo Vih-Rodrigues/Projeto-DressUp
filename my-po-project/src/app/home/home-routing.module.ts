@@ -7,6 +7,7 @@ import { ClosetComponent } from './closet/closet.component';
 import { LooksComponent } from './looks/looks.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AddLookComponent } from './add-look/add-look.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent
+  },
+  {
+    path: 'add-look',
+    component: AddLookComponent
   }
 ];
 

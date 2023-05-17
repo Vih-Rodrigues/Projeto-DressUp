@@ -6,12 +6,12 @@ import { PoMenuItem } from '@po-ui/ng-components';
 // Criação de containers dinâmicos - quantidade a partir do número de
 // peças de roupa armazenadas na tabela do banco de dados
 document.addEventListener('DOMContentLoaded', function () {
-  const containerNewItem = document.getElementById('container-new-look');
-  const qtdContainers = 15; // Número utilizado para teste (oficialmente será retornado por pesquisa no banco de dados)
+  const containerNewItem = document.getElementById('container-closet');
+  const qtdContainers = 12; // Número utilizado para teste (oficialmente será retornado por pesquisa no banco de dados)
 
   console.log(containerNewItem);
 
-  for (let i = 1; i <= qtdContainers; i++) {
+  for (let i = 0; i < qtdContainers; i++) {
     const container = document.createElement('div');
     container.classList.add('container');
     container.style.border = '1px solid black';
@@ -22,20 +22,18 @@ document.addEventListener('DOMContentLoaded', function () {
     container.style.margin = '5px';
     if (containerNewItem) {
       containerNewItem.appendChild(container);
-      container.innerHTML = '<img src="../../../assets/images/Calca.png" width="100" height="100"> </img>'
-                            + '<img src="../../../assets/images/BlusaMoletom.png" width="100" height="100"> </img>'
-                            + '<img src="../../../assets/images/Tenis.png" width="100" height="100"> </img>'; // Oficialmente, o comando deverá inserir o container a imagem encontrada no banco de dados
+      container.innerHTML = '<img src="../../../assets/images/BlusaMoletom.png" width="200" height="200"> </img>'; // Oficialmente, o comando deverá inserir o container a imagem encontrada no banco de dados
     }
   }
 });
 // ----------
 
 @Component({
-  selector: 'app-looks',
-  templateUrl: './looks.component.html',
-  styleUrls: ['./looks.component.css']
+  selector: 'app-add-look',
+  templateUrl: './add-look.component.html',
+  styleUrls: ['./add-look.component.css']
 })
-export class LooksComponent {
+export class AddLookComponent {
   booleanAuxContainer = true;
 
   readonly menus: Array<PoMenuItem> = [
@@ -94,8 +92,8 @@ export class LooksComponent {
     alert('Certeza que deseja sair?')
   }
 
-  public onClickAddLook() {
-    window.location.href = "add-look"
+  public onClickCreateLook() {
+    window.location.href = "looks"
   }
 
   constructor(private route: Router) { }
