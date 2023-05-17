@@ -1,1 +1,36 @@
-<p>looks works!</p>
+<div class="po-wrapper">
+    <po-toolbar p-title="DressUp > Looks"></po-toolbar>
+
+    <po-menu [p-menus]="menus" [p-collapsed]="true" p-fliter="true" p-logo="./assets/images/dressup.png"></po-menu>
+
+    <po-page-default>
+
+        <h3>
+            Página de looks.
+        </h3>
+        <p>
+            Para adicionar um novo look clique no botão "Adicionar".
+        </p>
+
+        <br>
+
+        <po-button p-label="Adicionar" p-icon="po-icon-plus" (p-click)="onClickAddLook()"> </po-button>
+
+        <br>
+        <br>
+
+        <!-- Containers dinâmicos - de acordo com a quantidade de peças de roupa cadastradas -->
+        <div id="container-new-look">
+        </div>
+
+        <br>
+        
+        <!-- chamada de container apenas para dar espaço ao final da página -->
+        <po-container
+            [p-height]="30"
+            [p-no-border]="booleanAuxContainer"
+            [p-no-padding]="booleanAuxContainer"
+            [p-no-shadow]="booleanAuxContainer" >
+        </po-container>
+    </po-page-default>
+</div>

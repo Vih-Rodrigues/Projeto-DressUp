@@ -31,7 +31,9 @@ import { ProfileComponent } from './profile/profile.component';
     TemplatePoUiComponent,
     AddItensComponent,
     ClosetComponent,
-    LooksComponent
+    LooksComponent,
+    AboutUsComponent,
+    ProfileComponent
   ]
 })
 export class HomeModule { }
