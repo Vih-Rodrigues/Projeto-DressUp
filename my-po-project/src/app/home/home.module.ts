@@ -10,6 +10,7 @@ import { LooksComponent } from './looks/looks.component';
 import { PoModule } from '@po-ui/ng-components';
 import { PoTemplatesModule } from '@po-ui/ng-templates';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
     AddItensComponent,
     ClosetComponent,
     LooksComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,

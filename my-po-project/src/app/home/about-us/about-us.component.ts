@@ -20,6 +20,7 @@ export class AboutUsComponent {
       label: 'Perfil',
       shortLabel: "Perfil",
       icon: 'po-icon po-icon-user',
+      action: this.Navegar.bind(this),
       link: '/profile'
     },
     {

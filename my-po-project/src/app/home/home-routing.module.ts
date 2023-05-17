@@ -6,6 +6,7 @@ import { AddItensComponent } from './add-itens/add-itens.component';
 import { ClosetComponent } from './closet/closet.component';
 import { LooksComponent } from './looks/looks.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'about-us',
     component: AboutUsComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
   }
 ];
 
