@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { PoMenuItem } from '@po-ui/ng-components';
 
 @Component({
-  selector: 'app-add-itens',
-  templateUrl: './add-itens.component.html',
-  styleUrls: ['./add-itens.component.css']
+  selector: 'app-about-us',
+  templateUrl: './about-us.component.html',
+  styleUrls: ['./about-us.component.css']
 })
-export class AddItensComponent {
+export class AboutUsComponent {
   readonly menus: Array<PoMenuItem> = [
     {
       label: 'Home',
@@ -37,7 +37,7 @@ export class AddItensComponent {
     {
       label: 'Looks',
       shortLabel: 'Looks',
-      icon: 'po-icon po-icon-star'
+      icon: 'po-icon po-icon-star',
     },
     {
       label: 'Sobre',
@@ -58,18 +58,6 @@ export class AddItensComponent {
   private onClick() {
     alert('Certeza que deseja sair?')
   }
-
-  // Função para permitir ao usuário selecionar arquivos de sua máquina (fotos -> add itens)
-  onFileSelected(event: any) {
-    const selectedFile = event.target.files[0];
-    console.log(selectedFile);
-  }
-
-  
-  onClickAdicionar() {
-    alert('Peça de roupa adicionada ao closet com sucesso!')
-  }
-  
 
   constructor(private route: Router) { }
 
