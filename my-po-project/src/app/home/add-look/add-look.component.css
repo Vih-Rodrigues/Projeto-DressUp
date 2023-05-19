@@ -2,3 +2,7 @@
 .header {
     text-align: left;
 }
+
+div.clicked-container {
+    background-color: yellow;
+}
