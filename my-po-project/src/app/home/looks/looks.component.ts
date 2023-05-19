@@ -1,34 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { PoMenuItem } from '@po-ui/ng-components';
-
-// ----------
-// Criação de containers dinâmicos - quantidade a partir do número de
-// peças de roupa armazenadas na tabela do banco de dados
-document.addEventListener('DOMContentLoaded', function () {
-  const containerNewItem = document.getElementById('container-new-look');
-  const qtdContainers = 15; // Número utilizado para teste (oficialmente será retornado por pesquisa no banco de dados)
-
-  console.log(containerNewItem);
-
-  for (let i = 1; i <= qtdContainers; i++) {
-    const container = document.createElement('div');
-    container.classList.add('container');
-    container.style.border = '1px solid black';
-    container.style.backgroundColor = '#BA55D3';
-    container.style.display = 'inline-block';
-    container.style.width = '17%';
-    container.style.boxSizing = 'borderbox';
-    container.style.margin = '5px';
-    if (containerNewItem) {
-      containerNewItem.appendChild(container);
-      container.innerHTML = '<img src="../../../assets/images/Calca.png" width="100" height="100"> </img>'
-                            + '<img src="../../../assets/images/BlusaMoletom.png" width="100" height="100"> </img>'
-                            + '<img src="../../../assets/images/Tenis.png" width="100" height="100"> </img>'; // Oficialmente, o comando deverá inserir o container a imagem encontrada no banco de dados
-    }
-  }
-});
-// ----------
 
 @Component({
   selector: 'app-looks',
@@ -98,7 +70,33 @@ export class LooksComponent {
     window.location.href = "add-look"
   }
 
-  constructor(private route: Router) { }
+  // Criação de containers dinâmicos - quantidade a partir do número de
+  // peças de roupa armazenadas na tabela do banco de dados
+  ngAfterViewInit() {
+    const containerNewItem = this.elementRef.nativeElement.querySelector('#container-new-look');
+    const qtdContainers = 15; // Número utilizado para teste (oficialmente será retornado por pesquisa no banco de dados)
+
+    for (let i = 1; i <= qtdContainers; i++) {
+      const container = this.renderer.createElement('div');
+      this.renderer.addClass(container, 'container');
+      this.renderer.setStyle(container, 'border', '1px solid black');
+      this.renderer.setStyle(container, 'backgroundColor', '#BA55D3');
+      this.renderer.setStyle(container, 'display', 'inline-block');
+      this.renderer.setStyle(container, 'width', '17%');
+      this.renderer.setStyle(container, 'boxSizing', 'borderbox');
+      this.renderer.setStyle(container, 'margin', '5px');
+      
+      const img = this.renderer.createElement('img');
+      this.renderer.setAttribute(img, 'src', '../../../assets/images/Look-teste.png');
+      this.renderer.setAttribute(img, 'wigth', '150');
+      this.renderer.setAttribute(img, 'height', '150');
+
+      this.renderer.appendChild(container, img);
+      this.renderer.appendChild(containerNewItem, container);
+    }
+  }
+
+  constructor(private route: Router, private renderer: Renderer2, private elementRef: ElementRef) { }
 
   Navegar(route: any) {
     console.log(route.link)
