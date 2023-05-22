@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { PoMenuItem } from '@po-ui/ng-components';
+import { PoDynamicModule } from '@po-ui/ng-components';
 
 @Component({
   selector: 'app-template-po-ui',
@@ -65,6 +66,6 @@ export class TemplatePoUiComponent {
   constructor(private route: Router) { }
 
   Navegar(route: any) {
-    console.log(route.link)
+    //console.log(route.link)
   }
 }

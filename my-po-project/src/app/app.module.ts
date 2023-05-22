@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { PoTemplatesModule } from '@po-ui/ng-templates';
 import { PoPageLoginModule } from '@po-ui/ng-templates';
 import { PoContainerModule } from '@po-ui/ng-components';
+import { PoDynamicModule } from '@po-ui/ng-components';
 
 import { HomeModule } from './home/home.module';
 import { AuthenticationModule } from './authentication/authentication.module';
@@ -32,7 +33,8 @@ import { FormsModule } from '@angular/forms'; // biblioteca para usar a função
     PoContainerModule,
     HomeModule,
     AuthenticationModule,
-    FormsModule
+    FormsModule,
+    PoDynamicModule
   ],
   providers: [],
   bootstrap: [AppComponent]
