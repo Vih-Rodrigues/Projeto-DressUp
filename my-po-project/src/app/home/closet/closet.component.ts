@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     container.style.margin = '5px';
     if (containerNewItem) {
       containerNewItem.appendChild(container);
-      container.innerHTML = '<img src="../../../assets/images/dressup.png" width="250" height="200"> </img>'; // Oficialmente, o comando deverá inserir o container a imagem encontrada no banco de dados
+      container.innerHTML = '<img src="../../../assets/images/BlusaMoletom.png" width="200" height="200"> </img>'; // Oficialmente, o comando deverá inserir o container a imagem encontrada no banco de dados
     }
   }
 });
@@ -70,6 +70,8 @@ export class ClosetComponent{
       label: 'Looks',
       shortLabel: 'Looks',
       icon: 'po-icon po-icon-star',
+      action: this.Navegar.bind(this),
+      link: '/looks'
     },
     {
       label: 'Sobre',

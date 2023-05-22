@@ -11,6 +11,7 @@ import { PoModule } from '@po-ui/ng-components';
 import { PoTemplatesModule } from '@po-ui/ng-templates';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AddLookComponent } from './add-look/add-look.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ProfileComponent } from './profile/profile.component';
     ClosetComponent,
     LooksComponent,
     AboutUsComponent,
-    ProfileComponent
+    ProfileComponent,
+    AddLookComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +33,9 @@ import { ProfileComponent } from './profile/profile.component';
     TemplatePoUiComponent,
     AddItensComponent,
     ClosetComponent,
-    LooksComponent
+    LooksComponent,
+    AboutUsComponent,
+    ProfileComponent
   ]
 })
 export class HomeModule { }

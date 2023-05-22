@@ -57,6 +57,8 @@ export class ProfileComponent {
       label: 'Looks',
       shortLabel: 'Looks',
       icon: 'po-icon po-icon-star',
+      action: this.Navegar.bind(this),
+      link: '/looks'
     },
     {
       label: 'Sobre',

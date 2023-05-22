@@ -40,7 +40,9 @@ export class AddItensComponent {
     {
       label: 'Looks',
       shortLabel: 'Looks',
-      icon: 'po-icon po-icon-star'
+      icon: 'po-icon po-icon-star',
+      action: this.Navegar.bind(this),
+      link: '/looks'
     },
     {
       label: 'Sobre',

@@ -3,12 +3,13 @@ import { Router } from '@angular/router';
 import { PoMenuItem } from '@po-ui/ng-components';
 
 @Component({
-  selector: 'app-looks',
-  templateUrl: './looks.component.html',
-  styleUrls: ['./looks.component.css']
+  selector: 'app-add-look',
+  templateUrl: './add-look.component.html',
+  styleUrls: ['./add-look.component.css']
 })
-export class LooksComponent {
+export class AddLookComponent {
   booleanAuxContainer = true;
+  booleanItemIsClicked = false;
 
   readonly menus: Array<PoMenuItem> = [
     {
@@ -66,34 +67,44 @@ export class LooksComponent {
     alert('Certeza que deseja sair?')
   }
 
-  public onClickAddLook() {
-    window.location.href = "add-look"
+  public onClickCreateLook() {
+    window.location.href = "looks"
   }
 
   // Criação de containers dinâmicos - quantidade a partir do número de
   // peças de roupa armazenadas na tabela do banco de dados
   ngAfterViewInit() {
-    const containerNewItem = this.elementRef.nativeElement.querySelector('#container-new-look');
-    const qtdContainers = 15; // Número utilizado para teste (oficialmente será retornado por pesquisa no banco de dados)
-
-    for (let i = 1; i <= qtdContainers; i++) {
+    const containerNewItem = this.elementRef.nativeElement.querySelector('#container-closet');
+    const qtdContainers = 12;
+    
+    for (let i = 0; i < qtdContainers; i++) {
       const container = this.renderer.createElement('div');
-      this.renderer.addClass(container, 'container');
+      this.renderer.addClass(container, 'container-closet');
       this.renderer.setStyle(container, 'border', '1px solid black');
       this.renderer.setStyle(container, 'backgroundColor', '#BA55D3');
       this.renderer.setStyle(container, 'display', 'inline-block');
       this.renderer.setStyle(container, 'width', '17%');
       this.renderer.setStyle(container, 'boxSizing', 'borderbox');
       this.renderer.setStyle(container, 'margin', '5px');
-      
+    
       const img = this.renderer.createElement('img');
-      this.renderer.setAttribute(img, 'src', '../../../assets/images/Look-teste.png');
-      this.renderer.setAttribute(img, 'wigth', '150');
+      this.renderer.setAttribute(img, 'src', '../../../assets/images/BlusaMoletom.png');
+      this.renderer.setAttribute(img, 'width', '150');
       this.renderer.setAttribute(img, 'height', '150');
-
+    
       this.renderer.appendChild(container, img);
       this.renderer.appendChild(containerNewItem, container);
+    
+      this.renderer.listen(container, 'click', () => {
+        this.onClickItem(container);
+      });
     }
+  }
+
+  // Altera a cor do container para deixa-lo destacado
+  public onClickItem(container: HTMLElement) {
+    //this.renderer.addClass(container, 'clicked-container'); --->>> NÃO RESPEITA O .CSS
+    this.renderer.setStyle(container, 'backgroundColor', '#00BFFF');
   }
 
   constructor(private route: Router, private renderer: Renderer2, private elementRef: ElementRef) { }
