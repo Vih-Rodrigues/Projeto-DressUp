@@ -1,9 +1,23 @@
-<po-container>
-    <po-button p-label="Login">
-        
-    </po-button>
+<header> 
+    <nav class="navbar fixed-top navbar-dark bg-primary">
+        <a class="navbar-brand">Dress Up App</a>
+    </nav>
+</header>
 
-    <po-button p-label="Cadastro">
+<section>
+    <main class="container">
         
-    </po-button>
-</po-container>
+    </main>
+</section>
+
+<footer class="mt-2 p-2 text-center">
+    <a> Vista-se com estilo e agilidade!</a>
+</footer>
+
+<h2> Que bom ter você aqui!</h2>
+<hr/>
+
+    <po-button p-label="Login" [routerLink]="['/login']" class="po-md-4"
+    ></po-button>
+
+    <po-button p-label="Cadastro" [routerLink]="['/sign-up']" class="po-md-4" ></po-button>
