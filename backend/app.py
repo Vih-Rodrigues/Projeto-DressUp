@@ -1,0 +1,83 @@
+from flask import Flask, flash, request, jsonify, send_file
+from flask_sqlalchemy import SQLAlchemy
+import os
+import zipfile
+import json
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://Patricia:Dressup2023@dressup2023.postgres.database.azure.com/dressup?sslmode=require"
+db = SQLAlchemy(app)
+
+class Usuario(db.Model):
+    __tablename__ = 'tb_usuario'
+    
+    cod_usuario = db.Column(db.Integer, primary_key = True)
+    nome = db.Column(db.String(60), nullable = False)
+    email = db.Column(db.String(40), nullable = False, unique = True)
+    senha = db.Column(db.String(20), nullable = False)
+
+class Categorias(db.Model):
+    __tablename__ = 'tb_categorias'
+    
+    cod_categoria = db.Column(db.Integer, primary_key = True)
+    categoria = db.Column(db.String(10), nullable = False)
+    descricao = db.Column(db.String(10), nullable = False )
+
+class Peca(db.Model):
+    __tablename__ = 'tb_peca'
+
+    cod_peca = db.Column(db.Integer, primary_key = True)
+    cod_usuario = db.Column(db.Integer, db.ForeignKey('tb_usuario.cod_usuario'))
+    referencia_tabela_usuario = db.relationship('Usuario', backref=db.backref('Peca', lazy = True))
+
+
+@app.route('/cadastrar',methods = ['POST'])
+def cadastro_novo():
+    data = request.get_json()
+    novo_usuario = Usuario(
+        nome = data['nome'],
+        email = data['email'],
+        senha = data['senha']
+    )
+    db.session.add(novo_usuario)
+    
+    try:
+        db.session.commit()
+        return jsonify({
+            'message' : f'{novo_usuario.nome} cadastrado com sucesso.'}), 201
+        
+    except Exception as error:
+        print(error)
+        return jsonify({'message': 'Cadastro não realizado.Verifique os dados.'}), 400
+    
+@app.route('/exportar_usuario', methods = ['GET'])
+def exportar_usuario():
+    usuario = Usuario.query.all()
+    teste = []
+    for i in usuario:
+        testes = {
+            'nome': i.nome
+        }        
+        teste.append(testes)
+    
+    jsonfilename = 'arquivoexportado.json'
+    with open(jsonfilename, 'w') as jsonfile: 
+        json.dump(teste, jsonfile)
+        
+    zip_filename = 'arquivoexportado.zip'
+    table_name = Usuario.__tablename__
+    export_folder = os.path.join(app.root_path, 'export')
+    zip_path = os.path.join(export_folder, zip_filename)
+    
+    with zipfile.ZipFile(zip_path, 'w') as zipado:
+        zipado.write(jsonfilename, f'{table_name}.json')
+    
+    os.remove(jsonfilename)
+    
+    return send_file(zip_path, mimetype = 'application/zip', as_attachment = True, attachment_filename = zip_filename)
+    
+    
+if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()    
+    app.run(debug=True)
