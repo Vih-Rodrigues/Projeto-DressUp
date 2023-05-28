@@ -28,7 +28,29 @@ class Peca(db.Model):
 
     cod_peca = db.Column(db.Integer, primary_key = True)
     cod_usuario = db.Column(db.Integer, db.ForeignKey('tb_usuario.cod_usuario'))
-    referencia_tabela_usuario = db.relationship('Usuario', backref=db.backref('Peca', lazy = True))
+    referencia_tabela_usuario = db.relationship('Usuario', backref = db.backref('Peca', lazy = True))
+    
+class Imagem(db.Model):
+    __tablename__ = 'tb_imagem'
+    
+    cod_imagem = db.Column(db.Integer, primary_key = True)
+    cod_peca = db.Column(db.Integer, db.ForeignKey('tb_peca.cod_peca'))
+    referencia_tabela_peca = db.relationship('Peca', backref = db.backref('Imagem', lazy = True))
+    imagem = db.Column(db.LargeBinary)
+
+class Look(db.Model):
+    __tablename__ = 'tb_look'
+    
+    cod_look = db.Column(db.Integer, primary_key = True)
+    pecas = db.Column(db.String, nullable = False)
+    
+class Aux_Look(db.Model):
+    __tablename__ = 'tb_aux_look'
+    
+    cod_aux_look = db.Column(db.Integer, primary_key = True)
+    cod_look = db.Column(db.Integer, db.ForeignKey('tb_look.cod_look'))
+    referencia_tabela_look = db.relationship('Look', backref = db.backref('Aux_Look', lazy = True))
+    peca = db.Column(db.Integer, nullable = False)
 
 
 @app.route('/cadastrar',methods = ['POST'])
