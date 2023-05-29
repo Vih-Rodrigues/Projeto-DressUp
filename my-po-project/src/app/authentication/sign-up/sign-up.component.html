@@ -14,7 +14,5 @@
     <a> Vista-se com estilo e agilidade!</a>
 </footer>
 
-<po-dynamic-form [p-fields]="[{ property: 'Nome', required: true, showRequired: true }]"> </po-dynamic-form>
-<po-dynamic-form [p-fields]="[{ property: 'Email', required: true, showRequired: true }]"> </po-dynamic-form>
-<po-dynamic-form [p-fields]="[{ property: 'Senha', required: true, showRequired: true }]"> </po-dynamic-form>
+<po-dynamic-form [p-fields]="fields"></po-dynamic-form>
 <po-button p-label="Salvar" (p-click)="onClick()"></po-button>

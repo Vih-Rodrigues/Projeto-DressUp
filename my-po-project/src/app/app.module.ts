@@ -34,7 +34,8 @@ import { FormsModule } from '@angular/forms'; // biblioteca para usar a função
     HomeModule,
     AuthenticationModule,
     FormsModule,
-    PoDynamicModule
+    PoDynamicModule,
+    NgModule
   ],
   providers: [],
   bootstrap: [AppComponent]
