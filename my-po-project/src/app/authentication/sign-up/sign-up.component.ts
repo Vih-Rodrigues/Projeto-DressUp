@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-up',
@@ -15,16 +16,16 @@ export class SignUpComponent {
     { property: 'Senha', required: true, showRequired: true }
    ];
 
-  varnome: string = "";
-  varemail: string = "";
-  varsenha: string = "";
+    varnome = this.fields[0]; 
+    varemail = this.fields[1];
+    varsenha = this.fields[2];
 
   constructor(private router: Router,
               private http: HttpClient) { }
 
   onClick(){    
     const url = 'http://127.0.0.1:5000/cadastrar';
-    const data = { nome: this.varnome, email: this.varemail, senha: this.varsenha};
+    const data = { nome: this.varnome, email: this.varemail.property, senha: this.varsenha.property};
     this.http.post(url, data).subscribe(
       response => {
         console.log('Post successful', response);

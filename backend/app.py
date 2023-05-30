@@ -1,12 +1,17 @@
 from flask import Flask, flash, request, jsonify, send_file
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 import os
 import zipfile
 import json
 
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://Patricia:Dressup2023@dressup2023.postgres.database.azure.com/dressup?sslmode=require"
 db = SQLAlchemy(app)
+CORS(app)
+
+CORS(app, origins ='http://localhost:4200')
 
 class Usuario(db.Model):
     __tablename__ = 'tb_usuario'
