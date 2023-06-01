@@ -17,7 +17,7 @@ export class SignUpComponent {
               private http: HttpClient) { }              
 
   onClick(){    
-    const url = 'http://127.0.0.1:5000/cadastrar';    ;
+    const url = 'http://127.0.0.1:5000/cadastrar';
     const data = { nome: this.nomeDigitado, email: this.emailDigitado, senha: this.senhaDigitada };
     this.http.post(url, data).subscribe(
       response => {

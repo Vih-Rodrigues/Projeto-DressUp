@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { PoMenuItem } from '@po-ui/ng-components';
 import { PoDynamicModule } from '@po-ui/ng-components';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-template-po-ui',
@@ -9,6 +10,9 @@ import { PoDynamicModule } from '@po-ui/ng-components';
   styleUrls: ['./template-po-ui.component.css']
 })
 export class TemplatePoUiComponent {
+
+  advice: string = "";
+
   readonly menus: Array<PoMenuItem> = [
     {
       label: 'Home',
@@ -62,12 +66,27 @@ export class TemplatePoUiComponent {
   ];
 
   private onClick() {
-    alert('Certeza que deseja sair?')
+    alert('Já vai sair?')
   }
 
-  constructor(private route: Router) { }
+  constructor(private route: Router,
+              private http: HttpClient) { }
 
   Navegar(route: any) {
     //console.log(route.link)
   }
+
+  noClick() {
+    const url = 'https://api.adviceslip.com/advice';
+
+    this.http.get<any>(url).subscribe(
+      (data) => {
+        this.advice = data.slip.advice;
+      },
+      (error) => {
+        console.error('Error fetching advice:', error);
+      }
+    );
+  }
+
 }

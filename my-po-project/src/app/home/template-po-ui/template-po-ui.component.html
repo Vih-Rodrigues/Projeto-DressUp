@@ -1,11 +1,22 @@
 <div class="po-wrapper">
     <po-toolbar p-title="DressUp > Home"></po-toolbar>
-
+  
     <po-menu [p-menus]="menus" [p-collapsed]="true" p-fliter="true" p-logo="./assets/images/dressup.png"></po-menu>
-
-    <po-page-default>
-        <div class = 'po-row'>
-            <po-widget class = 'po-sm-6' [p-height]='400' p-title="DressUp: seu closet online" p-background="../../../assets/images/img_home.png"></po-widget>
+  
+    <po-page-default>  
+      <div class="po-row">
+        <div class="po-sm-6">
+          <po-widget [p-height]="400" p-title="DressUp: seu closet online" p-background="../../../assets/images/img_home.png"></po-widget>
         </div>
+      </div>
+      <div class="po-row">
+        <div class="po-sm-6">
+          <div class="button-container">
+            <po-button p-label="Dica do dia" class="po-sm-12" (p-click)="noClick()"></po-button>
+            <p class="advice-text">{{ advice }}</p>
+          </div>
+        </div>
+      </div>
     </po-page-default>
-</div>
+  </div>
+  
