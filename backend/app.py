@@ -1,10 +1,10 @@
-from flask import Flask, flash, request, jsonify, send_file
+from flask import Flask, request, jsonify, send_file
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 import os
 import zipfile
 import json
-import requests
+import pdb
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://Patricia:Dressup2023@dressup2023.postgres.database.azure.com/dressup?sslmode=require"
@@ -102,8 +102,8 @@ def exportar_usuario():
     os.remove(jsonfilename)
     
     return send_file(zip_path, mimetype = 'application/zip', as_attachment = True, attachment_filename = zip_filename)
-    
 
+"""
 @app.route('/conselho-do-dia', methods=['GET'])
 def get_advice():
     url = 'https://api.adviceslip.com/advice'
@@ -111,8 +111,21 @@ def get_advice():
     data = response.json()
     advice = data['slip']['advice']
     return jsonify(advice=advice)
+"""
 
-    
+@app.route('/login', methods=['POST'])
+def validaLogin():
+    pdb.set_trace()
+    email = request.form.get('email')
+    senha = request.form.get('senha')
+
+    usuario = Usuario.query.filter_by(email=email, senha=senha).first()
+
+    if usuario:
+        return "Login autorizado."
+
+    return "Não encontrado."
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()    

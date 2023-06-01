@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router} from '@angular/router';
-
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -8,13 +8,23 @@ import { Router} from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  emailDigitado!: string;
+  senhaDigitada!: string;
 
-  constructor(
-    private router: Router
-) { }
+  constructor(private router: Router,
+              private http: HttpClient) { }
 
-  validaCadastro(){
+  validaLogin(){
+    const url = 'http://127.0.0.1:5000/login';
+    const data = { email: this.emailDigitado, senha: this.senhaDigitada };
+    this.http.post(url, data).subscribe(
+      response => {
+        console.log('Usuário já cadastrado. Login autorizado.', response);
+      },
+      error => {
+        console.error('Usuário não encontrado.', error);
+      }
+    );
     this.router.navigate(['/template-po-ui'])
   }
-
 }
