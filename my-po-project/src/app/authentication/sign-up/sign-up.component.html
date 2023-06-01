@@ -14,5 +14,10 @@
     <a> Vista-se com estilo e agilidade!</a>
 </footer>
 
-<po-dynamic-form [p-fields]="fields"></po-dynamic-form>
-<po-button p-label="Salvar" (p-click)="onClick()"></po-button>
+<div class="po-m-5">          
+    <po-input  name="nomeDigitado" [(ngModel)]="nomeDigitado" p-label="Nome" p-placeholder="Digite seu nome."></po-input>
+    <po-input  name="emailDigitado" [(ngModel)]="emailDigitado" p-label="E-mail" p-placeholder="Digite seu e-mail."></po-input>
+    <po-input  name="senhaDigitada" [(ngModel)]="senhaDigitada" p-label="Senha" p-placeholder="Digite sua senha."></po-input>
+
+    <po-button p-label="Salvar" (p-click)="onClick()"></po-button>
+</div>

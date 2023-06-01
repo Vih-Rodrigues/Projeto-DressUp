@@ -11,7 +11,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://Patricia:Dressup2023@dress
 db = SQLAlchemy(app)
 CORS(app)
 
-CORS(app, origins ='http://localhost:4200')
+CORS(app, origins = "http://localhost:4200")
 
 class Usuario(db.Model):
     __tablename__ = 'tb_usuario'
