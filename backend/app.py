@@ -114,15 +114,20 @@ def get_advice():
 
 @app.route('/login', methods=['POST'])
 def validaLogin():
-    email = request.form.get('email')
-    senha = request.form.get('senha')
+    data = request.get_json()
+    email = data['email']
+    senha = data['senha']
+
+    print(email)
+    print(senha)
 
     usuario = Usuario.query.filter_by(email=email, senha=senha).first()
+    print(usuario)
 
     if usuario:
-        return "Login autorizado."
+        return jsonify({'message': 'Login autorizado.'}), 200
 
-    return "Não encontrado."
+    return jsonify({'message': 'Não encontrado.'}), 401
 
 if __name__ == '__main__':
     with app.app_context():
