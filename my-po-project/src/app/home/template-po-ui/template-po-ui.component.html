@@ -6,14 +6,17 @@
     <po-page-default>  
       <div class="po-row">
         <div class="po-sm-6">
-          <po-widget [p-height]="400" p-title="DressUp: seu closet online" p-background="../../../assets/images/img_home.png"></po-widget>
+          <po-widget [p-height]="350" p-title="DressUp: seu closet online" p-background="../../../assets/images/img_home.png"></po-widget>
         </div>
       </div>
       <div class="po-row">
         <div class="po-sm-6">
           <div class="button-container">
             <po-button p-label="Dica do dia" class="po-sm-12" (p-click)="noClick()"></po-button>
+            <br>
             <p class="advice-text">{{ advice }}</p>
+            <br>
+            <po-button p-label="Exportar Dicas" class="po-sm-6" (p-click)="export()"></po-button>
           </div>
         </div>
       </div>

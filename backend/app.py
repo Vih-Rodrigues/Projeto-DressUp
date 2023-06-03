@@ -1,4 +1,5 @@
 from flask import Flask, flash, request, jsonify, send_file
+from flask import session
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 import os
@@ -57,6 +58,11 @@ class Aux_Look(db.Model):
     referencia_tabela_look = db.relationship('Look', backref = db.backref('Aux_Look', lazy = True))
     peca = db.Column(db.Integer, nullable = False)
 
+class Conselhos(db.Model):
+    __tablename__ = 'tb_conselhos'
+
+    cod_conselho = db.Column(db.Integer, primary_key=True)
+    conselho = db.Column(db.String)
 
 @app.route('/cadastrar',methods = ['POST'])
 def cadastro_novo():
@@ -105,12 +111,60 @@ def exportar_usuario():
     
 
 @app.route('/conselho-do-dia', methods=['GET'])
-def get_advice():
+def get_dica():
     url = 'https://api.adviceslip.com/advice'
     response = requests.get(url)
     data = response.json()
     advice = data['slip']['advice']
-    return jsonify(advice=advice)
+    conselho = Conselhos(conselho=advice)
+    db.session.add(conselho)
+    db.session.commit()
+    return jsonify(message='Conselho ouvido com sucesso!')
+
+@app.route('/conselhos', methods=['POST'])
+def insert_advice():
+    advice = request.json['advice']
+    novo_conselho = Conselhos(conselho=advice)
+    db.session.add(novo_conselho)
+    db.session.commit()
+    return jsonify(message='Conselho guardado')
+
+@app.route('/conselhos', methods=['GET'])
+def get_conselho():
+    conselhos = Conselhos.query.all()
+    dicas = [{'cod_conselho': conselho.cod_conselho, 'conselho': conselho.conselho} for conselho in conselhos]
+    return jsonify(dicas)
+
+import os
+import zipfile
+from flask import send_file, make_response
+
+@app.route('/exportar_conselhos', methods=['GET'])
+def exportar_conselhos():
+    conselhos = Conselhos.query.all()
+    list_conselho = []
+    for i in conselhos:
+        list_conselhos = {
+            'conselho': i.conselho
+        }        
+        list_conselho.append(list_conselhos)
+    
+    jsonfilename = 'listaconselhos.json'
+    with open(jsonfilename, 'w') as jsonfile: 
+        json.dump(list_conselho, jsonfile)
+    
+    zip_filename = 'conselhos.zip'
+    json_path = os.path.join(os.getcwd(), jsonfilename)
+    
+    with zipfile.ZipFile(zip_filename, 'w') as zip_file:
+        zip_file.write(json_path, os.path.basename(json_path))
+    
+    os.remove(jsonfilename)
+    
+    response = make_response(send_file(zip_filename, mimetype='application/zip'))
+    response.headers['Content-Disposition'] = 'attachment; filename=conselhos.zip'
+    
+    return response
 
     
 if __name__ == '__main__':
