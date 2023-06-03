@@ -1,5 +1,5 @@
 from flask import Flask, flash, request, jsonify, send_file
-from flask import session
+from flask import session, make_response
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 import os
@@ -134,10 +134,6 @@ def get_conselho():
     conselhos = Conselhos.query.all()
     dicas = [{'cod_conselho': conselho.cod_conselho, 'conselho': conselho.conselho} for conselho in conselhos]
     return jsonify(dicas)
-
-import os
-import zipfile
-from flask import send_file, make_response
 
 @app.route('/exportar_conselhos', methods=['GET'])
 def exportar_conselhos():
