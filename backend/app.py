@@ -127,7 +127,7 @@ def validaLogin():
     if usuario:
         return jsonify({'message': 'Login autorizado.'}), 200
 
-    return jsonify({'message': 'Não encontrado.'}), 401
+    return jsonify({'message': 'Usuário não encontrado, tente novamente.'}), 401
 
 if __name__ == '__main__':
     with app.app_context():

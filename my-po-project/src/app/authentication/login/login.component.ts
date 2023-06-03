@@ -21,11 +21,11 @@ export class LoginComponent {
     this.http.post(url, data).subscribe(
       response => {
         console.log('Usuário já cadastrado. Login autorizado.', response);
+        this.router.navigate(['/template-po-ui'])
       },
       error => {
         console.error('Usuário não encontrado.', error);
       }
     );
-    this.router.navigate(['/template-po-ui'])
   }
 }
