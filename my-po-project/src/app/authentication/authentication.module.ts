@@ -5,12 +5,14 @@ import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { HelloComponent } from './hello/hello.component';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { PoFieldModule } from '@po-ui/ng-components';
 
 
 import { PoPageLoginModule } from '@po-ui/ng-templates';
 import { PoButtonModule, PoContainerModule } from '@po-ui/ng-components';
 import { PoPageModule } from '@po-ui/ng-components';
 import { PoDynamicModule } from '@po-ui/ng-components';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { PoDynamicModule } from '@po-ui/ng-components';
     PoContainerModule,
     PoButtonModule,
     PoPageModule,
-    PoDynamicModule
+    PoDynamicModule,
+    PoFieldModule,
+    FormsModule,
 
   ],
   exports: [

@@ -16,6 +16,7 @@ import { PoDynamicModule } from '@po-ui/ng-components';
 import { HomeModule } from './home/home.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 
+import { NgModel } from '@angular/forms';
 import { FormsModule } from '@angular/forms'; // biblioteca para usar a função de inserir arquivo .png (add itens)
 
 @NgModule({

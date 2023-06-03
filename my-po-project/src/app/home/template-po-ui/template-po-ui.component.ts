@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { PoMenuItem } from '@po-ui/ng-components';
 import { PoDynamicModule } from '@po-ui/ng-components';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-template-po-ui',
@@ -9,6 +10,13 @@ import { PoDynamicModule } from '@po-ui/ng-components';
   styleUrls: ['./template-po-ui.component.css']
 })
 export class TemplatePoUiComponent {
+
+  advice: string = "";
+
+  ngOnInit() {
+    this.noClick();
+  }
+
   readonly menus: Array<PoMenuItem> = [
     {
       label: 'Home',
@@ -62,12 +70,58 @@ export class TemplatePoUiComponent {
   ];
 
   private onClick() {
-    alert('Certeza que deseja sair?')
+    alert('Já vai sair?')
   }
 
-  constructor(private route: Router) { }
+  constructor(private route: Router,
+              private http: HttpClient) { }
 
   Navegar(route: any) {
     //console.log(route.link)
   }
+
+  noClick() {    
+    const url = 'https://api.adviceslip.com/advice';
+
+    this.http.get<any>(url).subscribe(
+      (data) => {
+        this.advice = data.slip.advice;
+        this.insertBanco();
+      },
+      (error) => {
+        console.error('Ops!Há algo errado com as dicas', error);
+      }
+    );
+  }
+
+  insertBanco(){
+    const url = 'http://localhost:5000/conselhos'
+    this.http.post<any>(url, { advice: this.advice }).subscribe(
+      (data) => {
+        console.log(data.slip.advice);
+      },
+      (error) => {
+        console.error('Ops!Há algo errado ao inserir conselhos', error);
+      }
+    );
+  }
+
+  export() {
+    const url = 'http://localhost:5000/exportar_conselhos';
+    this.http.get(url, { responseType: 'blob' })
+    .subscribe(
+      (data) => {
+        const blob = new Blob([data], { type: 'application/zip' });
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'conselhos.zip';
+        link.click();
+      },
+      (error) => {
+        console.error('Ops! Houve um erro ao exportar os conselhos', error);
+      }
+    );
+  }
+
 }
