@@ -4,7 +4,6 @@ from flask_cors import CORS
 import os
 import zipfile
 import json
-import pdb
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://Patricia:Dressup2023@dressup2023.postgres.database.azure.com/dressup?sslmode=require"
@@ -115,7 +114,6 @@ def get_advice():
 
 @app.route('/login', methods=['POST'])
 def validaLogin():
-    pdb.set_trace()
     email = request.form.get('email')
     senha = request.form.get('senha')
 

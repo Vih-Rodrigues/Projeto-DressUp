@@ -8,13 +8,14 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  emailDigitado!: string;
-  senhaDigitada!: string;
+  varNoBorder: boolean = true;
+  emailDigitado?: string = "";
+  senhaDigitada?: string = "";
 
   constructor(private router: Router,
               private http: HttpClient) { }
 
-  validaLogin(){
+  onClick(){
     const url = 'http://127.0.0.1:5000/login';
     const data = { email: this.emailDigitado, senha: this.senhaDigitada };
     this.http.post(url, data).subscribe(
