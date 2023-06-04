@@ -2,12 +2,21 @@
     <po-container [p-no-border]="varNoBorder">
         
         <h1>Login</h1>
+
+        <br>
         
-        <po-input  name="emailDigitado" p-size="md" [(ngModel)]="emailDigitado" p-label="E-mail" p-placeholder="Insira seu e-mail."></po-input>
+        <po-input  name="emailDigitado" p-size="md" [(ngModel)]="emailDigitado" p-label="E-mail" p-placeholder="Insira seu e-mail." (ngModelChange)="verificaSeEmailFoiInformado()"></po-input>
         
         <po-input  name="senhaDigitada" [(ngModel)]="senhaDigitada" p-label="Senha" p-placeholder="Insira sua senha."></po-input>
 
+        <br>
+
         <po-button p-label="Entrar" p-kind="primary" p-size="medium" (p-click)="onClick()"></po-button>
+
+        <br>
+        <br>
+
+        <po-button p-label="Esqueci minha senha." p-kind="tertiary" p-size="medium" (p-click)="esqueciMinhaSenha()" [p-disabled]="!emailInformado"></po-button>
 
     </po-container>
 </div>

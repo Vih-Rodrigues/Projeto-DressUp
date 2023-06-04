@@ -85,7 +85,7 @@ export class ClosetComponent{
       shortLabel: "Sair",
       icon: 'po-icon po-icon-exit',
       action: this.onClick.bind(this),
-      link: '/login'
+      link: '/hello'
     }
   ];
 
