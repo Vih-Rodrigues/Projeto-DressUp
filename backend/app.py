@@ -176,7 +176,37 @@ def validaLogin():
         return jsonify({'message': 'Login autorizado.'}), 200
 
     return jsonify({'message': 'Usuário não encontrado, tente novamente.'}), 401
-    
+
+@app.route('/selectNomeUsuarioLogado', methods=['POST'])
+def retornaNomeUsuarioLogado():
+    data = request.get_json()
+    email = data['email']
+
+    usuario = Usuario.query.filter_by(email=email).first()
+
+    # Se o usuário for encontrado, retorna o nome dele
+    if usuario:
+        return jsonify({'nome': usuario.nome}), 200
+    # Caso contrário, retorna erro
+    else:
+        return jsonify({'message': 'Nome de usuário não encontrado, ou usuário sem nome cadastrado. Tente novamente.'}), 401
+
+@app.route('/updateSenhaUsuario', methods=['POST'])
+def alteraSenhaUsuario():
+    data = request.get_json()
+    email = data['email']
+
+    usuario = Usuario.query.filter_by(email=email).first()
+
+    # Se o usuário for encontrado, altera a senha:
+    if usuario:
+        usuario.senha = data['nova_senha']
+        db.session.commit()
+        return jsonify({'message': 'Senha alterada com sucesso.'}), 200
+    # Caso contrário, retorna erro:
+    else:
+        return jsonify({'message': 'Não foi possível alterar a senha.'}), 401
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()    
