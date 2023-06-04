@@ -1,3 +1,13 @@
-<po-page-login p-logo="../../../assets/images/dressup.png" (p-login-submit)="validaCadastro()"
+<div class="paginaLogin">
+    <po-container [p-no-border]="varNoBorder">
+        
+        <h1>Login</h1>
+        
+        <po-input  name="emailDigitado" p-size="md" [(ngModel)]="emailDigitado" p-label="E-mail" p-placeholder="Insira seu e-mail."></po-input>
+        
+        <po-input  name="senhaDigitada" [(ngModel)]="senhaDigitada" p-label="Senha" p-placeholder="Insira sua senha."></po-input>
 
-></po-page-login>
+        <po-button p-label="Entrar" p-kind="primary" p-size="medium" (p-click)="onClick()"></po-button>
+
+    </po-container>
+</div>
