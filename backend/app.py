@@ -5,7 +5,6 @@ from flask_cors import CORS
 import os
 import zipfile
 import json
-import requests
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://Patricia:Dressup2023@dressup2023.postgres.database.azure.com/dressup?sslmode=require"
@@ -108,7 +107,6 @@ def exportar_usuario():
     os.remove(jsonfilename)
     
     return send_file(zip_path, mimetype = 'application/zip', as_attachment = True, attachment_filename = zip_filename)
-    
 
 @app.route('/conselho-do-dia', methods=['GET'])
 def get_dica():
@@ -162,6 +160,22 @@ def exportar_conselhos():
     
     return response
 
+@app.route('/login', methods=['POST'])
+def validaLogin():
+    data = request.get_json()
+    email = data['email']
+    senha = data['senha']
+
+    print(email)
+    print(senha)
+
+    usuario = Usuario.query.filter_by(email=email, senha=senha).first()
+    print(usuario)
+
+    if usuario:
+        return jsonify({'message': 'Login autorizado.'}), 200
+
+    return jsonify({'message': 'Usuário não encontrado, tente novamente.'}), 401
     
 if __name__ == '__main__':
     with app.app_context():
