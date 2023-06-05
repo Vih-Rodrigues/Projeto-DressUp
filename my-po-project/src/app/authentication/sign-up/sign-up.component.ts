@@ -10,13 +10,21 @@ import { HttpClient } from '@angular/common/http';
 export class SignUpComponent {
 
   nomeDigitado? : string = "";
-  emailDigitado? : string = "";
+  emailDigitado: string = "";
   senhaDigitada?: string = "";
+
+  // Função que armazena o email no Local Storage do navegador
+  armazenaDadosNoLocalStorage(): void {
+    localStorage.setItem('emailUserLogado', this.emailDigitado);
+  }
 
   constructor(private router: Router,
               private http: HttpClient) { }              
 
-  onClick(){    
+  onClick(){
+    // Chamada da função para gravar os valores informados pelo usuário no Local Storage
+    this.armazenaDadosNoLocalStorage();
+
     const url = 'http://127.0.0.1:5000/cadastrar';
     const data = { nome: this.nomeDigitado, email: this.emailDigitado, senha: this.senhaDigitada };
     this.http.post(url, data).subscribe(
